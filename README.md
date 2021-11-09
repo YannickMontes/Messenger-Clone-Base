@@ -178,7 +178,7 @@ La réponse attendue:
         "title": "Cmaconversation",
         "theme": "BLUE",
         "updated_at": "1995-12-17T03:24:00",
-        "seen": [],
+        "seen": {},
         "typing": {}
     }
 }
@@ -213,7 +213,7 @@ La réponse attendue:
         "title": "Cmaconversationaplusieurs",
         "theme": "BLUE",
         "updated_at": "1995-12-17T03:24:00",
-        "seen": [],
+        "seen": {},
         "typing": {}
     }
 }
@@ -245,7 +245,7 @@ La réponse attendue:
         "title": "Cmaconversation",
         "theme": "BLUE",
         "updated_at": "1995-12-17T03:24:00",
-        "seen": [],
+        "seen": {},
         "typing": {}
     },
     ...
@@ -371,7 +371,7 @@ Les valeurs possibles pour les réactions sont: **HEART, THUMB, HAPPY, SAD**
 La réponse attendue ne contient rien dans l'objet data, seulement le code de retour.
 
 
-### 3.4 La liste des évènement à envoyer
+### 3.4 La liste des évènement à envoyer *(20 pts)*
 
 Le serveur doit informer tout les clients des changements dans la base de données, pour que chaque client puisse réagir en fonction de ces derniers, et rafraichir l'UI avec les nouvelles informations. 
 
@@ -385,7 +385,7 @@ Pour rappel, pour envoyer un évènement à un socket en particulier, on peut ut
 socket.emit("@monEvenement", data); //data étant un objet contenant ce que l'on veut envoyer.
 ```
 
-#### 3.4.1 Création d'utilisateur
+#### 3.4.1 Création d'utilisateur *(3 pts)*
 
 Le nom de cet évènement est **userCreated**.
 Le serveur doit envoyer l'évènement à chaque fois qu'un utilisateur est ajouté a la base de données.
@@ -405,7 +405,7 @@ Le corps de l'objet data doit être le suivant :
 ```
 
 
-#### 3.4.2 Création de conversation
+#### 3.4.2 Création de conversation *(3 pts)*
 
 Le nom de l'évènement est **conversationCreated**.
 Le serveur doit envoyer cet évènement à chaque création de conversation, à tout les clients.
@@ -425,7 +425,7 @@ Le corps de l'objet est:
 }
 ```
 
-#### 3.4.3 Nouveau message
+#### 3.4.3 Nouveau message *(4 pts)*
 
 Le nom de l'évènement est **messagePosted**.
 Le serveur doit envoyer cet évènement à chaque nouveau message sur une conversation, aux clients concernés.
@@ -443,7 +443,7 @@ Le corps de l'objet est:
 }
 ```
 
-#### 3.4.4 Conversation vue
+#### 3.4.4 Conversation vue *(3 pts)*
 
 Le nom de l'évènement est **conversationSeen**.
 Le serveur doit envoyer cet évènement à chaque fois qu'un participant a une conversation a lu un nouveau message de la conversation.
@@ -459,12 +459,12 @@ Le corps de l'objet data est une conversation, définie comme suit:
     "title": "Cmaconversationaplusieurs",
     "theme": "BLUE",
     "updated_at": "1995-12-17T03:24:00",
-    "seen": [],
+    "seen": {},
     "typing": {}
 }
 ```
 
-#### 3.4.5 Réaction à un message
+#### 3.4.5 Réaction à un message *(3 pts)*
 
 Le nom de l'évènement est **messageReacted**.
 
@@ -481,7 +481,7 @@ Le corps de l'objet data est le suivant:
 }
 ```
 
-#### 3.4.6 Message édité
+#### 3.4.6 Message édité *(3 pts)*
 
 Le nom de l'évènement est **messageEdited**.
 
@@ -498,7 +498,7 @@ Le corps de l'objet data est le suivant:
 }
 ```
 
-#### 3.4.7 Message supprimé dans une conversation
+#### 3.4.7 Message supprimé dans une conversation *(3 pts)*
 
 Le nom de l'évènement est **messageDeleted**.
 
