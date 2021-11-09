@@ -1,0 +1,27 @@
+{
+  "name": "Messenger-Clone-Base",
+  "version": "0.0.1",
+  "description": "Clone of messenger",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.12",
+    "mongoose-type-email": "^1.1.2",
+    "socket.io": "^4.3.1"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
