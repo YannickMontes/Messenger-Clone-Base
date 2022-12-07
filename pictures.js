@@ -260,4 +260,6 @@ function getRandomURL()
   return getUrl(pickRandom());
 }
 
-module.exports = {getRandomURL: getRandomURL};
+module.exports = {
+	getRandomURL
+};

@@ -2,30 +2,24 @@
 
 L'objectif de ce TP est de recréer un site de messagerie, très similaire à messenger.
 
-Pour cela, nous allons utiliser la librairie Socket.io avec Node.js, qui nous permettra d'ouvir des communications full-duplex avec chaque personne connectée sur le site.
+Pour cela, nous allons utiliser la librairie **Socket.io** avec Node.js, qui nous permettra d'ouvir des communications full-duplex avec chaque personne connectée sur le site.
 
 Toute la partie client sera vue avec Benjamin, vous ne serez donc pas notés sur cette partie là pour ce projet.
 
-Ici nous allons donc utiliser le client suivant: https://teach-vue-chat-build-hosted.glitch.me/
+Ici nous allons donc utiliser le client suivant que vous pouvez trouver [ici](https://github.com/benjaminchazelle/teach-vue-chat-client-build)
 
-Je vous invite à utiliser Glitch https://glitch.com (cela permet d'outre passer le pare-feu de l'IUT, qui bloque les connexions à l'atlas de MongoDB, et donc à la base de données).
-
-Vous pouvez cloner ce projet dans Glitch, et contribuer à plusieurs personnes en même temps dessus.
-
-L'addresse du serveur de démo mis en ligne est la suivante: wss://teach-vue-chat-server.glitch.me
-
-La notation est sur 100 points. 80 seront accordés pour les fonctionnalités, et 20 pour la qualité du code.
+La notation est sur **100** points. **80** seront accordés pour les **fonctionnalités**, et **20** pour la **qualité du code**.
 Des bonus pourront être appliqués si l'application propose des fonctionnalités non demandées.
 
 ## 1. Architecture _(15 pts)_
 
-Votre application devra utiliser Express, MongoDB, Socket.io & tout ce dont vous pourriez avoir besoin en plus.
+Votre application devra utiliser **Express**, **MongoDB**, **Socket.io** & tout ce dont vous pourriez avoir besoin en plus.
 
 L'architecture de la base MongoDB sera décomposé en 3 schémas:
 
-- User (Défini par un nom)
-- Conversation (Définie par un id)
-- Message (Défini par un id)
+- **User** (Défini par un nom)
+- **Conversation** (Définie par un id)
+- **Message** (Défini par un id)
 
 Je vous laisserai trouver chaque contenu des schémas.
 

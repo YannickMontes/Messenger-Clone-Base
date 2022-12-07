@@ -7,17 +7,16 @@ const { Server } = require("socket.io");
 
 const io = new Server(server, { cors: { origin: "*" } });
 
-app.get("/", (req, res) => {
-    res.send("A utiliser pour du debug si vous avez besoin...");
-});
-
-server.listen(process.env.PORT, () => {
-    console.log("Server is listening");
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => {
+    console.log("Server is listening on port " + PORT);
 });
 
 io.on("connection", socket => {
     //Penser a conserver le socket pour pouvoir s'en servir plus tard
     //Remplacer les callbacks par des fonctions dans d'autres fichiers.
+
+	console.log("Client socket connected !");
 
     socket.on("@authenticate", ({ username, password }, callback) => { callback({code:"SUCCESS", data:{}}); });
     
@@ -35,5 +34,3 @@ io.on("connection", socket => {
 
     socket.on("disconnect", (reason) =>{ });
 });
-
-// Addresse du serveur démo: wss://teach-vue-chat-server.glitch.me
