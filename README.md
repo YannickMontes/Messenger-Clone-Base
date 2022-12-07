@@ -27,6 +27,11 @@ _Hint: Vous pouvez **fortement** vous inspirez des morceaux de JSON que l'on env
 
 ## 2. Fonctionnement général _(15 pts)_
 
+Notre serveur remplira deux rôles principaux:
+
+- Recevoir les requêtes socket du client (partie 3)
+- Envoyer des réponses (via socket) à tout les clients actuellement connecté lorsqu'une modification est faite (partie 4)
+
 ### 2.1 Création d'un utilisateur en base de données _(5 pts)_
 
 Lors de la première connexion d'un utilisateur, ce dernier rentre son nom et son mot de passe.
@@ -93,9 +98,9 @@ socket.on("@evenement", ({data}, callback) => {
 
 ```
 
-#### 3.3.1 Authentification _(2 pts)_
+### 3.4 Authentification _(2 pts)_
 
-Lors de l'authentification, le client nous envoie une requête socket, nommée **authenticate**.
+Lors de l'authentification, le client nous envoie une requête socket, nommée **@authenticate**.
 
 Le corps de la requête est comme suit:
 
@@ -119,9 +124,9 @@ Le client s'attends à une réponse avec l'objet data suivant:
 }
 ```
 
-#### 3.3.2 Récupération de la liste d'utilisateurs _(2 pts)_
+### 3.5 Récupération de la liste d'utilisateurs _(2 pts)_
 
-La requête est du nom suivant: **getUsers**.
+La requête est du nom suivant: **@getUsers**.
 
 Le corps de la requête est comme suit:
 
@@ -153,9 +158,9 @@ Le client s'attends à une réponse sous ce format:
 }
 ```
 
-#### 3.3.3 Récupération ou création d'un conversation one to one _(4 pts)_
+### 3.6 Récupération ou création d'un conversation one to one _(4 pts)_
 
-La requête est du nom suivant: **getOrCreateOneToOneConversation**.
+La requête est du nom suivant: **@getOrCreateOneToOneConversation**.
 
 Le corps de la requête est comme suit:
 
@@ -187,9 +192,9 @@ La réponse attendue:
 }
 ```
 
-#### 3.3.4 Récupération ou création d'un conversation many to many _(4 pts)_
+### 3.7 Récupération ou création d'un conversation many to many _(4 pts)_
 
-La requête est du nom suivant: **getOrCreateManyToManyConversation**.
+La requête est du nom suivant: **@getOrCreateManyToManyConversation**.
 
 Le corps de la requête est comme suit:
 
@@ -221,9 +226,9 @@ La réponse attendue:
 }
 ```
 
-#### 3.3.5 Récupération de toutes les conversations _(2 pts_)
+### 3.8 Récupération de toutes les conversations _(2 pts_)
 
-La requête est du nom suivant: **getConversations**.
+La requête est du nom suivant: **@getConversations**.
 
 Le corps de la requête est comme suit:
 
@@ -255,9 +260,9 @@ La réponse attendue:
 }
 ```
 
-#### 3.3.6 Envoi de message dans une conversation _(8 pts_)
+### 3.9 Envoi de message dans une conversation _(8 pts_)
 
-La requête est du nom suivant: **postMessage**.
+La requête est du nom suivant: **@postMessage**.
 
 Le corps de la requête est comme suit:
 
@@ -287,9 +292,9 @@ La réponse attendue:
 }
 ```
 
-#### 3.3.7 Edition d'un message _(2 pts_)
+### 3.10 Edition d'un message _(2 pts_)
 
-La requête est du nom suivant: **editMessage**.
+La requête est du nom suivant: **@editMessage**.
 
 Le corps de la requête est comme suit:
 
@@ -304,9 +309,9 @@ Le corps de la requête est comme suit:
 
 La réponse attendue ne contient rien dans l'objet data, seulement le code de retour.
 
-#### 3.3.8 Répondre à un message _(2 pts_)
+### 3.11 Répondre à un message _(2 pts_)
 
-La requête est du nom suivant: **editMessage**.
+La requête est du nom suivant: **@replyMessage**.
 
 Le corps de la requête est comme suit:
 
@@ -337,9 +342,9 @@ La réponse attendue:
 }
 ```
 
-#### 3.3.9 Delete message _(2 pts_)
+### 3.12 Delete message _(2 pts_)
 
-La requête est du nom suivant: **deleteMessage**.
+La requête est du nom suivant: **@deleteMessage**.
 Le corps de la requête est comme suit:
 
 ```json
@@ -353,9 +358,9 @@ Le corps de la requête est comme suit:
 
 La réponse attendue ne contient rien dans l'objet data, seulement le code de retour.
 
-#### 3.3.10 Réagir à un message _(2 pts_)
+### 3.13 Réagir à un message _(2 pts_)
 
-La requête est du nom suivant: **reactMessage**.
+La requête est du nom suivant: **@reactMessage**.
 Le corps de la requête est comme suit:
 
 ```json
@@ -371,7 +376,7 @@ Les valeurs possibles pour les réactions sont: **HEART, THUMB, HAPPY, SAD**
 
 La réponse attendue ne contient rien dans l'objet data, seulement le code de retour.
 
-### 3.4 La liste des évènement à envoyer _(20 pts)_
+## 4 La liste des évènement à envoyer _(20 pts)_
 
 Le serveur doit informer tout les clients des changements dans la base de données, pour que chaque client puisse réagir en fonction de ces derniers, et rafraichir l'UI avec les nouvelles informations.
 
@@ -383,9 +388,9 @@ Pour rappel, pour envoyer un évènement à un socket en particulier, on peut ut
 socket.emit("@monEvenement", data); //data étant un objet contenant ce que l'on veut envoyer.
 ```
 
-#### 3.4.1 Création d'utilisateur _(3 pts)_
+### 4.1 Création d'utilisateur _(3 pts)_
 
-Le nom de cet évènement est **userCreated**.
+Le nom de cet évènement est **@userCreated**.
 Le serveur doit envoyer l'évènement à chaque fois qu'un utilisateur est ajouté a la base de données.
 
 Le corps de l'objet data doit être le suivant :
@@ -401,9 +406,9 @@ Le corps de l'objet data doit être le suivant :
 }
 ```
 
-#### 3.4.2 Création de conversation _(3 pts)_
+### 4.2 Création de conversation _(3 pts)_
 
-Le nom de l'évènement est **conversationCreated**.
+Le nom de l'évènement est **@conversationCreated**.
 Le serveur doit envoyer cet évènement à chaque création de conversation, à tout les clients.
 
 Le corps de l'objet est:
@@ -421,9 +426,9 @@ Le corps de l'objet est:
 }
 ```
 
-#### 3.4.3 Nouveau message _(4 pts)_
+### 4.3 Nouveau message _(4 pts)_
 
-Le nom de l'évènement est **messagePosted**.
+Le nom de l'évènement est **@messagePosted**.
 Le serveur doit envoyer cet évènement à chaque nouveau message sur une conversation, aux clients concernés.
 
 Le corps de l'objet est:
@@ -438,9 +443,9 @@ Le corps de l'objet est:
 }
 ```
 
-#### 3.4.4 Conversation vue _(3 pts)_
+### 4.4 Conversation vue _(3 pts)_
 
-Le nom de l'évènement est **conversationSeen**.
+Le nom de l'évènement est **@conversationSeen**.
 Le serveur doit envoyer cet évènement à chaque fois qu'un participant a une conversation a lu un nouveau message de la conversation.
 
 Le corps de l'objet data est une conversation, définie comme suit:
@@ -459,9 +464,9 @@ Le corps de l'objet data est une conversation, définie comme suit:
 }
 ```
 
-#### 3.4.5 Réaction à un message _(3 pts)_
+### 4.5 Réaction à un message _(3 pts)_
 
-Le nom de l'évènement est **messageReacted**.
+Le nom de l'évènement est **@messageReacted**.
 
 Envoyé à chaque fois qu'un utilisateur réagi à un message, à chaque participants de la conversation.
 
@@ -476,9 +481,9 @@ Le corps de l'objet data est le suivant:
 }
 ```
 
-#### 3.4.6 Message édité _(3 pts)_
+### 4.6 Message édité _(3 pts)_
 
-Le nom de l'évènement est **messageEdited**.
+Le nom de l'évènement est **@messageEdited**.
 
 Il doit être envoyé à chaque fois qu'un utilisateur édite un message, à chaque personne de la conversation ciblée.
 
@@ -493,9 +498,9 @@ Le corps de l'objet data est le suivant:
 }
 ```
 
-#### 3.4.7 Message supprimé dans une conversation _(3 pts)_
+### 4.7 Message supprimé dans une conversation _(3 pts)_
 
-Le nom de l'évènement est **messageDeleted**.
+Le nom de l'évènement est **@messageDeleted**.
 
 Ils doivent être envoyés quand un participant supprime un message, à chaque personne présente dans la conversation.
 
